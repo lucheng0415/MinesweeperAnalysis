@@ -61,5 +61,67 @@ namespace TestMinesweeperAnalysis
 			ret = SolutionValidation(4, 4, 7);
 			Assert::AreEqual(false, get<0>(ret));
 		}
+
+		TEST_METHOD(TestLoadSymbolsToBoard)
+		{
+			/* Setup the test data */
+			int boardSizeA = 4;
+			int boardSizeB = 4;
+			int nMines = 4;
+
+			/* After load configuration the board should look like this
+			    x x x x
+				2 3 3 2
+				0 0 0 0
+				0 0 0 0
+				There are 4 mines, 2 number "2", 2 number "3", and 8 nubmer "0".
+			*/
+
+			vector<vector<int> > board(boardSizeA, vector<int>(boardSizeB));
+
+			/* Init the board to 0 */
+			for (int i = 0; i < boardSizeA; i++)
+			{
+				for (int j = 0; j < boardSizeB; j++)
+				{
+					board[i][j] = 0;
+				}
+			}
+			LoadSymbolsToBoard(board, boardSizeA, boardSizeB, nMines);
+
+			int cntMines = 0;
+			int cntNTwo = 0;
+			int cntNThree = 0;
+			int cntNZero = 0;
+
+			for (int i = 0; i < boardSizeA; i++)
+			{
+				for (int j = 0; j < boardSizeB; j++)
+				{
+					switch (board[i][j])
+					{
+					case 9 :
+						cntMines++;
+						break;
+					case 2:
+						cntNTwo++;
+						break;
+					case 3:
+						cntNThree++;
+						break;
+					case 0:
+						cntNZero++;
+						break;
+					default:
+						break;
+					}
+				}
+			}
+			Assert::AreEqual(4, cntMines);
+			Assert::AreEqual(2, cntNTwo);
+			Assert::AreEqual(2, cntNThree);
+			Assert::AreEqual(8, cntNZero);
+		}
+
 	};
 }

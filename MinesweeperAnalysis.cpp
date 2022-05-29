@@ -128,6 +128,107 @@ void PrintBoard(const vector<vector<int> >& board, const int& n, const int& m)
     }
 }
 
+/*
+Function: LoadSymbolsToBoard
+This function loads the mines and the numbers to the board
+and if the last mines + 1 reach the boundary of the board
+then move this mine to the next line.
+Mines counting, if we have a square with position(i,j), then it has eight connections
+1 - (i + 1, j + 1)
+2 - (i + 1, j)
+3 - (i + 1, j - 1)
+4 - (i, j + 1)
+5 - (i, j - 1)
+6 - (i - 1, j + 1)
+7 - (i - 1, j)
+8 - (i - 1, j - 1)
+The second part of this fuction counts the mines followed by this sequence.
+In: a 2-D vecotr arrary, size of the board and nubmer of mines
+Out: void
+*/
+void LoadSymbolsToBoard(vector<vector<int> >& board, const int& n, const int& m, int nMines)
+{
+    int cntMines = 0; /* A counter of numbers of mines placed */
+#ifdef DEBUG
+    cout << __func__ << " n " << n << " m " << m << " nMines " << nMines << endl;
+#endif
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            /* As the max value of a number square is 8, so define the 9 to represent there is a mine */
+            board[i][j] = 9;
+            cntMines++;
+            if (cntMines == nMines)
+            {
+                /* This to avoid the corner case, leave at least two spare squares to the end */
+                if ((j + 2 == m) && (n * m != (nMines + 1)))
+                {
+                    board[i][j] = 0;
+                    board[i + 1][0] = 9;
+                }
+                /* Hack to stop the loop */
+                i = n;
+                j = m;
+            }
+        }
+    }
+
+    cntMines = 0;
+    for (int iStart = 0; iStart < n; iStart++)
+    {
+#ifdef DEBUG
+        cout << __func__ << "Counting the row of iStart" << " " << iStart << endl;
+#endif
+        for (int jStart = 0; jStart < m; jStart++)
+        {
+            if (board[iStart][jStart] == 9) /* Skip the mine squares */
+                continue;
+
+            /* The three squares starts with iStart + 1 */
+            if ((iStart + 1) < n)
+            {
+                if ((jStart + 1) < m && board[iStart + 1][jStart + 1] == 9)
+                    cntMines++;
+
+                if (board[iStart + 1][jStart] == 9)
+                    cntMines++;
+
+                if ((jStart - 1) >= 0 && board[iStart + 1][jStart - 1] == 9)
+                    cntMines++;
+
+            }
+
+            /* The two squares starts with iStart */
+            if ((jStart + 1) < m && board[iStart][jStart + 1] == 9)
+                cntMines++;
+            if ((jStart - 1) >= 0 && board[iStart][jStart - 1] == 9)
+                cntMines++;
+
+            /* The three squares starts with iStart - 1 */
+            if ((iStart - 1) >= 0)
+            {
+                if ((jStart + 1) < m && board[iStart - 1][jStart + 1] == 9)
+                    cntMines++;
+
+                if (board[iStart - 1][jStart] == 9)
+                    cntMines++;
+
+                if ((jStart - 1) >= 0 && board[iStart - 1][jStart - 1] == 9)
+                    cntMines++;
+
+            }
+
+            /* Assign the number of mines to the square and reset the counter */
+#ifdef DEBUG
+            cout << __func__ << "Counting in progress iStart" << " " << iStart << " " << "jStart" << " " << jStart << " cntMines " << cntMines << endl;
+#endif
+            board[iStart][jStart] = cntMines;
+            cntMines = 0;
+        }
+    }
+}
+
 int main()
 {
     string ans("");
