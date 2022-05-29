@@ -269,8 +269,9 @@ int main()
         }
 
         if (ret) {
+            cout << endl;
             cout << "There is valid mines configuration for " << get<0>(inputs) << " x " << get<1>(inputs) << " with " << get<2>(inputs) << " Mine(s)" << endl;
-
+            cout << endl;
             /* Use vector to represent a 2D array */
             vector<vector<int> > board(boardSizeA, vector<int>(boardSizeB));
 
@@ -284,6 +285,9 @@ int main()
             }
             LoadSymbolsToBoard(board, boardSizeA, boardSizeB, get<2>(inputs));
             PrintBoard(board, boardSizeA, boardSizeB);
+            cout << endl;
+            cout << "Click any square marked with 0 that can resolve the game with 1 click " << endl;
+            cout << "If there is only one square maked with nubmer 3, it seems there is only one choice for you "
         }
         else
         {
