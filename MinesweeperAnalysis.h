@@ -1,3 +1,5 @@
 #pragma once
+#include <tuple>
+using namespace std;
 
-bool Test(void);
+tuple <bool, bool> SolutionValidation(const int& boardSizeA, const int& boardSizeB, const int& nMines);
