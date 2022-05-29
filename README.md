@@ -1,5 +1,12 @@
 # Minesweeper 1-click solution analysis tool
 
+Project Files
+
+* MinesweeperAnalysis.cpp: the main implementation of this application.
+* MinesweeperAnalysis.h: expose the core functions to the unit test evironment.
+* TestMinesweeperAnalysis.cpp: the implementation of the unit test under Microsoftware CppUnitTestFramework.
+* Desgin.md: demonstrate the analysis process of this problem and how the abstraction process to translate the system requirements to the software requirements.
+
 How to use
 
 Clone the project and build it with Microsoft Visual Studio, in the Debug folder, there is an executable named Minesweeper.exe.
@@ -16,10 +23,3 @@ Inputs verification
 The number of mines need to be less than the nubmer of total squares and must not be 0, the size of the board must greater than 1.
 This is an example of incorrect inputs detection
 ![image](https://user-images.githubusercontent.com/18339276/170851984-f09fa22b-605e-444c-a66a-209c323f95d1.png)
-
-Project Files
-
-MinesweeperAnalysis.cpp: the main implementation of this application.
-MinesweeperAnalysis.h: expose the core functions to the unit test evironment.
-TestMinesweeperAnalysis.cpp: the implementation of the unit test under Microsoftware CppUnitTestFramework.
-Desgin.md: demonstrate the analysis process of this problem and how the abstraction process to translate the system requirements to the software requirements.
