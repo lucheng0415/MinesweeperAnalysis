@@ -287,7 +287,7 @@ int main()
             PrintBoard(board, boardSizeA, boardSizeB);
             cout << endl;
             cout << "Click any square marked with 0 that can resolve the game with 1 click " << endl;
-            cout << "If there is only one square maked with nubmer 3, it seems there is only one choice for you "
+            cout << "If there is only one square maked with nubmer 3, it seems there is only one choice for you ";
         }
         else
         {
