@@ -160,7 +160,7 @@ int main()
                     board[i][j] = 0;
                 }
             }
-
+            // todo add board placement and print function here !
         }
         else
         {
