@@ -3,6 +3,17 @@
 
 #include <iostream>
 
+
+/*
+    Dummy test function
+    In: void
+    Out: true
+*/
+bool Test(void)
+{
+    return true;
+}
+
 int main()
 {
     std::cout << "Hello World!\n";
