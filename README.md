@@ -119,3 +119,27 @@ Based on the analysis, the essential condition of a mines configuration should c
 * All the mines must be connected with the squares which are not contain a mine, or are next to the boundary;
 * All squares marked as containing a number must be connected with a square containing “0”;
 * All squares containing a “0” must be connected. 
+
+# Software Solution and Design
+
+The valid inputs verification
+If A and B both less than 2 then inputs are invalid, as there is no game that only has one square.
+If the board size (A x B) equals to the number of mines (N) or N equals to 0 then inputs are invalid.
+
+Finding the valid one-click configuration
+If the size of the board (A x B) equal to (N - 1), then directly print the mine's configuration.
+If A and B are equal, then calculate how many lines with length of A needed to place all the mines, then check if there are two lines left at least, if yes then there is a valid one-click configuration otherwise there isn’t.
+If A and B are not equal,  then calculate how many lines with the length of the shorter between A and B to place all the mines, then check if there are two lines left at least,  if yes then there is a valid one-click configuration otherwise there isn’t.
+
+There are four main fucntions needs to be implemented:
+* GetUserInputs: the user inputs, ask the user to input the size of the board and the numbers of the mines want to check.
+* SolutionValidation: the core process engine, to identify if there is a valid board configuration.
+* LoadSymbolsToBoard: writing the configuration to the required size of the board.
+* PrintBoard: print the calculated result to the console.
+
+Use std::vector to represent a 2D array which gives a flexible size defination: vector<vector<int> > board(boardSizeA, vector<int>(boardSizeB)) 
+
+
+# Reference
+Minesweeper. (n.d.). Minesweeper. Retrieved May 29, 2022, from https://minesweeper.online/
+
