@@ -107,6 +107,27 @@ tuple <bool, bool> SolutionValidation(const int& boardSizeA, const int& boardSiz
     return make_tuple(false, false);
 }
 
+/*
+Function: PrintBoard
+Print out the configured board to the console
+In: a 2-D vecotr arrary, size of the board
+Out: void
+*/
+void PrintBoard(const vector<vector<int> >& board, const int& n, const int& m)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            if (board[i][j] > 8)
+                cout << "*" << " ";
+            else
+                cout << board[i][j] << " ";
+        }
+        cout << endl;
+    }
+}
+
 int main()
 {
     string ans("");
