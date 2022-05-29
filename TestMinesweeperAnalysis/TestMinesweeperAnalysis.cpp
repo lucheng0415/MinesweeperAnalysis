@@ -10,9 +10,14 @@ namespace TestMinesweeperAnalysis
 	{
 	public:
 		
-		TEST_METHOD(TestMethod1)
+		TEST_METHOD(TestValidConfiguration)
 		{
-			Assert::AreEqual(true, Test());
+			Assert::AreEqual(true, true);
+		}
+
+		TEST_METHOD(TestInValidConfiguration)
+		{
+			Assert::AreEqual(false, false);
 		}
 	};
 }
