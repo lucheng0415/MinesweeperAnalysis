@@ -282,7 +282,8 @@ int main()
                     board[i][j] = 0;
                 }
             }
-            // todo add board placement and print function here !
+            LoadSymbolsToBoard(board, boardSizeA, boardSizeB, get<2>(inputs));
+            PrintBoard(board, boardSizeA, boardSizeB);
         }
         else
         {
