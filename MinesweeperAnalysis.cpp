@@ -2,30 +2,43 @@
 //
 
 #include <iostream>
+#include <cstring>
+#include <iomanip>
+#include <time.h>
+#include <cstdlib>
+#include <windows.h>
+#include <optional>
+#include <vector>
+#include <tuple>
 
+/* Debug information flag uncomment when needed */
+//#define DEBUG
+
+using namespace std;
 
 /*
-    Dummy test function
-    In: void
-    Out: true
+Function: GetUserInputs
+Input: n/a
+Output: a tuple of three int data represents: A B N
 */
-bool Test(void)
+tuple <int, int, int> GetUserInputs(void)
 {
-    return true;
+    int a, b, n = 0;
+
+    cout << "Please enter A: ";
+    cin >> a;
+    cout << endl;
+    cout << "Please enter B: ";
+    cin >> b;
+    cout << endl;
+    cout << "Please enter N: ";
+    cin >> n;
+    cout << endl;
+
+    return make_tuple(a, b, n);
 }
 
 int main()
 {
     std::cout << "Hello World!\n";
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
